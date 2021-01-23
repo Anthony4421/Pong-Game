@@ -33,10 +33,12 @@ function calculateMousePos(evt) {
 // Resets the score, resets the ball and disables win screen when mouse is clicked
 
 function handleMouseClick(evt) {
-	winScreen = false;
-	player1Score = 0;
-	player2Score = 0;
-	ballReset();
+	if (winScreen == true) {
+		winScreen = false;
+		player1Score = 0;
+		player2Score = 0;
+		ballReset();
+	}
 
 }
 	
@@ -75,13 +77,13 @@ function drawEverything() {
 	if (winScreen == true) {
 		colorRect(0,0, canvas.width, canvas.height, 'black');
 		canvasContext.fillStyle = 'white';
-		canvasContext.fillText('Click to continue', 300, 500);	
+		canvasContext.fillText('Click to continue', 320, 500);	
 		if (player1Score == WINNING_SCORE) {
 			canvasContext.fillStyle = 'white';
-			canvasContext.fillText('Left Player won', 300, 200);
+			canvasContext.fillText('Left Player won', 320, 200);
 		} else if (player2Score == WINNING_SCORE) {
 			canvasContext.fillStyle = 'white';
-			canvasContext.fillText('Right Player won', 300, 200);	
+			canvasContext.fillText('Right Player won', 320, 200);	
 
 		}
 				
@@ -167,11 +169,11 @@ function moveEverything() {
 function computerMovement() {
 
 	if (ballY-35 < paddle2Y + PADDLE_HEIGHT/2) {
-		paddle2Y = paddle2Y - 6;
+		paddle2Y = paddle2Y - 8;
 	}
 
 	if (ballY+35 > paddle2Y + PADDLE_HEIGHT/2) {
-		paddle2Y = paddle2Y + 6;
+		paddle2Y = paddle2Y + 8;
 	}
 
 
@@ -199,9 +201,5 @@ function drawNet() {
 
 }	
 		
-
-
-
-
 </script>
 </html>
